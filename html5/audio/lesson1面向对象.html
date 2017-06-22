@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson1</title>
+    <style>
+        body{
+            background-image: url("img1.jpg");overflow: hidden;;
+            color:white;
+            padding:100px;
+        }
+        a{text-decoration:none;width:50px;display:block;margin:50px 0;overflow: hidden;}
+        .btn{
+            padding:8px 12px;background:aqua;color:white;
+            transition:all 1s;
+        }
+        .btn:hover{
+            background:red;transition:all 1s;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<a href="javascript:void(0);" onclick="tz_play()" class="btn">播放</a>
+<a href="javascript:void(0);" onclick="tz_stop()" class="btn">暂停</a>
+<span id="timer"></span>
+<span id="timer2"></span>
+
+<script>
+    var audioDom =document.createElement("audio");
+
+//    for(var key in audioDom){
+//        console.log(key+"==="+audioDom[key]);
+//    }
+    audioDom.oncanplaythrough = function(){
+        var msecond =this.duration;
+        var m = parseInt(msecond/60);
+        var s = parseInt(msecond % 60);
+        var ms = (m<10 ?("0"+m):m)+":"+(s<10?("0"+s):s);
+        document.getElementById("timer").innerHTML = ms;
+    };
+    audioDom.addEventListener("timeupdate",function(){
+        var ms =this.currentTime;
+        var m = parseInt(ms/60);
+        var s = parseInt(ms % 60);
+        var ms = (m<10 ?("0"+m):m)+":"+(s<10?("0"+s):s);
+        document.getElementById("timer2").innerHTML = ms;
+    },false);
+    audioDom.src="某科学的超电磁炮s.mp3";
+    audioDom.play();
+    function tz_play(){
+        audioDom.play();
+    }
+    function tz_stop(){
+        audioDom.pause();
+    }
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <script>
+            function Person() {           	
+            }
+            //原型：每一个javascript对象(null除外)在创建的时候
+            //		就会有与之关联另一个对象，这个对象就是原型，
+            //		每一个对象都会从原型"继承"属性。
+            //prototype: 只有函数才有的属性
+            //Person.prototype(实例原型)
+            Person.prototype.name = "zhangxin";
+            var person1 = new Person();
+            var person2 = new Person();
+            var person = new Person();
+            console.log(person1.name);
+            console.log(person2.name);
+            //__proto__: 每一个javascript对象(null除外)都具有一个属性
+            //		     这个属性指向对象的原型
+            console.log(person.__proto__===Person.prototype);
+            //constructor: 每一个原型都有一个constructor属性指向关联的构造函数
+            //		       简单来说就是这个原型是之所以被召唤被构造出来就是因为
+            //	           有一个函数被称为构造函数的家伙给构造出来了所以这个
+            //             原型的constructor(构造器)就指向被他构造出来的构造函数
+            console.log(Person.prototype.constructor===Person);
+
+            
+            
+
+
+        </script>
+    </body>
+</html>

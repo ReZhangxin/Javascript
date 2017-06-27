@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+</head>
+<body>
+	<script>
+	//	当javascript代码执行一段可执行代码时，会创建对应的执行上下文。
+	//	对于每个执行上下文，都有三个重要的属性
+	//变量对象  作用域链  this
+	//变量对象VO	变量对象是执行上下文相关的的数据作用域，
+	//			存储了在上下文中定义的变量和函数声明。
+	//	全局上下文中变量对象就是全局对象
+	//	函数上下文中，用AO表示变量对象
+	//	进入执行上下文时，还没开始执行代码
+	//	变量对象包括:
+	//		1.函数的所有形参(没有则为undefined);
+	//		2.函数声明(function test(){});
+	//		3.变量声明(用var声明的变量 初始值为undefined)
+	function fo(a){
+		var b = 2;
+		function c(){}
+		var d = function(){};
+		b=3;
+	}
+	fo(1);
+	//进入执行上下文，这时候AO是:
+	AO = {
+		arguments: {
+        		0: 1,
+        		length: 1
+    		},
+    		a: 1,
+    		b: undefined,
+    		c: reference to function c(){},
+    		d: undefined
+	}
+	//代码执行，会顺序执行代码，修改变量对象的值
+	AO = {
+		arguments: {
+        		0: 1,
+        		length: 1
+    		},
+    		a: 1,
+    		b: 3,
+    		c: reference to function c(){},
+    		d: reference to FunctionExpression "d"
+	}
+	//1.全局上下文的变量对象初始化是全局对象
+
+	//2.函数上下文的变量对象初始化只包括 Arguments 对象
+
+	//3.在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值
+
+	//4.在代码执行阶段，会再次修改变量对象的属性值
+	//VO & AO 
+	//	未进入执行阶段之前，变量对象(VO)中的属性都不能访问！
+	//但是进入执行阶段之后，变量对象(VO)转变为了活动对象(AO)，
+	//里面的属性都能被访问了，然后开始进行执行阶段的操作。
+	//它们其实都是同一个对象，只是处于执行上下文的不同生命周期
+	</script>
+</body>
+</html>

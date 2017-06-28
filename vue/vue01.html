@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue入门</title>
+</head>
+<body>
+<div id="box">
+    <input type="text"  v-model="msg">
+    {{msg}}<br>
+    {{arr}}<br>
+    {{json}}
+    <ul>
+        <li v-for="(k,v) in arr" >
+              {{k}} {{v}}
+        </li>
+    </ul>
+    <button v-on:click="count++">按钮</button>
+    <p>这个按钮被点击了{{count}}次</p>
+</div>
+<div style="width: 100px ;height: 100px;background: teal;" v-show="ad">
+hello
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+    var c =new Vue({
+        el:"#box",
+        data:{//数据
+            msg:"welcome vue",
+            arr:['apple','banana','orange','pear'],
+            json:{a:'apple',b:'banana',c:'orange'},
+            count:0,
+            ad:false
+        },
+        methods:{
+            show:function(){
+                alert(1);
+            },
+            add:function(){
+                this.arr.push('tomato')
+            }
+        }
+    })
+</script>
+</body>
+</html>

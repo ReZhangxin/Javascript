@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:"#box",
+                data:{
+
+                },
+                methods:{
+                    show:function(ev){
+                        alert(ev.clientX);
+                        ev.preventDefault();
+                    },
+                    show2:function(){
+                        alert(2)
+                    },
+                    show3:function(){
+                        alert(666)
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div >
+        <button @contextmenu.stop="show($event)">按钮</button>
+        <input type="text" @keyup.enter="show3($event)">
+    </div>
+</div>
+</body>
+</html>

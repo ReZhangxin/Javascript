@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object</title>
+    <style>
+        #box{
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    function change(){
+        var boxDom = document.getElementById("box");
+        boxDom.style.width = "200px";
+        boxDom.style.height = "200px";
+        boxDom.style.background = "aqua";
+    }
+    setTimeout(change,3000);
+    function xinTimeout(fn,timer,params){
+        var args = arguments;
+        setTimeout(function(){
+            if(args.length>2){
+                var arr = [];
+                for(var i=2;i<args.length;i++){
+                    arr.push(args[i]);
+                }
+                fn.apply(this,arr)
+            }else{
+                fn();
+            }
+        },timer)
+    }
+    function sum(a,b){
+        alert(a+b);
+    }
+    xinTimeout(sum,1000,100,100)
+</script>
+</body>
+</html>

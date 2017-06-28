@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setInterval</title>
+</head>
+<body>
+
+<script>
+    function test(){
+        var arr =[],i;
+        for(i=0;i<3;i++){
+            arr[i] = function(){
+                return i;
+            }
+        }
+        return arr;
+    }
+    var t = test();
+    for(var i=0;i<t.length;i++){
+        var value = t[i]();
+        alert(value);
+    }
+</script>
+</body>
+</html>

@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>事件</title>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        .red{color:red;}
+        .blue{background-color: blueviolet}
+    </style>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
     <script>
         window.onload=function(){
             new Vue({
                 el:"#box",
                 data:{
-                    url:"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white.png",
-                    t:"hello",
-                    w:"400px",
-                    a:"23333"
+                   a:true,
+                   b:false,
+                   msg:"hello"
 
                 },
                 methods:{
@@ -24,7 +28,9 @@
 </head>
 <body>
 <div id="box">
-    <img :src="url" :alt="a" :width="w" :title="t">
+    <b :class={red:a,blue:a}>文字。。。</b>
+    {{12|currency}}
+    {{'msg'|uppercase}}
 </div>
 </body>
 </html>

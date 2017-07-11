@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>music</title>
+    <style>
+        #box{height:100px;background-color: aquamarine;margin:10px;}
+    </style>
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+<script>
+    // 对象 事件 回调函数   组件--对象加事件加回调函数的集成体
+    // 组件的认识
+    // json -->解决参数的问题
+    // 事件(回调函数) -->将一些操作继续交给用户去处理
+    // call,apply值是改变对对象的引用
+    // call和apply是函数的一种执行方式，只是这种执行方式可以改变这个函数中this的指向。
+
+    function test(){
+        alert(this.username);
+    }
+    var xin = {
+        username:"xin",
+        sayHello:function(){
+           test.call(xin);
+        }
+    };
+    xin.sayHello();
+
+</script>
+
+
+</body>
+</html>

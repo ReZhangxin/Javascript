@@ -1,16 +1,5 @@
 ``js
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>setInterval</title>
-</head>
-<body>
-
-<script>
-    
-    
     //对象 事件 回调函数 组件--对象+事件+回调函数的集成体
     //组件的认识
     //json：解决参数问题
@@ -31,13 +20,5 @@
         }
     };
     xin.sayHello();
-
     
-    
-    
-    
-</script>
-</body>
-</html>
-
 ```

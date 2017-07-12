@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	.prograss{background:#fff;border:1px solid green;height:30px;width:640px;position:relative;}
+	#percent{position:absolute;top:0;left:0;height:100%;width:0%;background:green}
+
+  </style>
+ </head>
+ <body>
+	<a href="javascript:void(0);" onclick="playstop(this)">播放</a>
+	<a href="javascript:void(0);" onclick="window.audio.next()">下一首</a>
+	<a href="javascript:void(0);" onclick="window.audio.prev()">上一首</a>
+	<span id="time">00:00</span>
+	<span id="stime">00:00</span>
+	<span id="sstime">00:00</span>
+	<div class="prograss">
+		<div id="percent"></div>	
+	</div>
+	<script type="text/javascript" src="audio.js"></script>
+	<script>
+		//对象，事件，回调函数，	组件--对象加事件加回调函数的集成体
+		//组件的认识:
+		//json:解决参数的问题
+		//事件(回调函数):讲一些操作继续交由用户去处理
+		//call(对象,参数1,参数2,....),apply(对象,[参数1,参数2,参数3,...])值是改变的对象的引用
+		//call和apply是函数的一种执行方式，只是这种执行可以改变这个函数中this的指向。
+		//公式:函数.call(对象,参数)
+		/*
+			组件封装的步骤：==音乐播放器的组件
+			1:创建一个音乐播放器
+			2:播放音乐
+			3:暂停音乐
+			4:显示时间
+			5:音量的控制
+			6:进度展示
+			7:上一首下一首
+			8:添加音乐
+			9:静音
+			10:歌词
+		*/
+
+		window.onload = function(){
+			//音乐初始化
+			audio.init();
+			//添加音乐
+			audio.add("mp3/01.mp3");
+			audio.add("mp3/02.mp3");
+			audio.add("mp3/03.mp3");
+			audio.add("mp3/04.mp3");
+
+			//音乐时间展示
+			audio.time(function(){
+				document.getElementById("time").innerHTML = this.time;
+			});
+			
+			//音乐百分比进度	
+			audio.percent(function(){
+				document.getElementById("percent").style.width = this.per+"%";	
+				document.getElementById("stime").innerHTML = this.time;	
+				document.getElementById("sstime").innerHTML = this.stime;	
+				
+				//音乐歌词
+			});
+		};
+
+		function playstop(obj){
+			var text = obj.innerHTML;
+			if(text=="播放"){
+				audio.play();
+				obj.innerHTML = "暂停";
+			}else{
+				audio.stop();
+				obj.innerHTML = "播放";
+			}
+		}
+	</script>
+ </body>
+</html>

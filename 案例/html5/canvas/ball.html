@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ball</title>
+    <style>
+        *{margin:0;padding:0;}
+        html,body{font-size:14px;font-family:Arial,Consolas;}
+        #canvas{background-color: black;}
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="960" height="460" ></canvas>
+
+
+<script>
+    //    context.fillStyle="aqua";
+    //    context.arc(200,200,50,0,Math.PI*2);
+    //    context.fill();
+    //
+    //    context.beginPath();
+    //    context.fillRect(300,300,200,100);
+    //    context.fill();
+     window.onload  = function(){
+        var canvas  = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var cWidth  = canvas.width;
+        var cHeight = canvas.height;
+        context.beginPath();
+
+
+        var ballNums = 201;
+        var balls    = [];
+        for(var i =0;i<ballNums;i++){
+            var ball = new Ball();
+            ball.x   = canvas.width/2;
+            ball.y   = canvas.height;
+            ball.radius = rangeRandom(5,30);
+            balls.push(ball);
+        }
+
+
+
+        function drawCanvas(ball){
+            ball.x = Math.random()*cWidth;
+            ball.y = Math.random()*cHeight;
+            ball.color = getRandomColor();
+            ball.radius = rangeRandom(5,30);
+            ball.draw(context);
+        }
+
+        //不断改变的小球
+        setInterval(function(){
+            context.clearRect(0,0,cWidth,cHeight);//擦黑板
+            //一次性绘制200个小球，并且没个小球都调用drawCanvas
+            balls.forEach(function(obj){
+                drawCanvas(obj)
+            })
+        },5000)
+
+    };
+
+
+
+    function Ball(radius) {
+        this.radius = radius;
+        this.x =0;
+        this.y =0;
+        this.color = "#666"
+    }
+
+    //绘制小球
+    Ball.prototype.draw = function(context){
+        context.beginPath();
+        context.fillStyle=this.color;
+        context.arc(this.x,this.y,this.radius,0,Math.PI*2);
+        context.fill();
+    };
+
+    //随机颜色
+    function getRandomColor(){
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+        return "rgb("+r+","+g+","+b+")";
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{padding:0;margin:0}
+	body{font-size:14px;font-family:"微软雅黑";}
+	a{text-decoration:none;color:#3333}
+  </style>
+ </head>
+ <body>
+	
+
+	<script>
+		
+
+	
+
+		/*
+			string ""和''
+			number 
+			function 
+			object 
+			   Array---表格排序和banner切片【二维数组】
+			   Date----万年历---
+			   Regex
+			   Error
+			   object
+			boolean
+			undefined
+
+			(音乐插件 html5 + canvas实现动画效果)
+
+			{
+				代码片段就存在作用域
+			}
+			
+		*/	
+		
+
+		//音乐播放器---只是一个单一的播放器-
+
+		//面向对象--已经是一个对象
+		/*var tzAduio = {
+			username:"柯柯",
+			age:30,
+			index:0,
+			address:"湖南长沙",
+			say:function(){
+				alert("大家好...")
+			}
+		};*/
+
+		//类====javascript是没有类的概念==function--在面向对象中function去执行是没有任何意
+		//游戏中的角色 小乖，胖妞，小龟，97
+		/*
+			游戏角色：名称，性别，级别，颜色，技能（跳，爬，打,跑）
+
+		*/
+
+		//class Role====ActionScript---面向对象的javascript
+		//当做一个类，Role()就是一个构造函数 ==类+构造函数集成体
+		//构造函数的作用是干嘛的：去申请内存空间的
+		//怎么申请---new
+		function Role(username){
+			this.sex= "男";
+			this.level = 0;
+			this.color = 'red';
+			this.jump = function(){
+				//alert("角色是:"+this.username+"性别是:"+this.sex+"===级别是:"+this.level+"===衣服颜色是:"+this.color+"它会跳");
+			}
+		}
+
+		
+
+
+			//在javascript可以动态添加属性和扩展方法.
+		
+			var xiaoguai = new Role("小乖");
+			xiaoguai.username = "小乖乖";
+			xiaoguai.sex = "女";
+			xiaoguai.address ="";
+			xiaoguai.level=10;
+			xiaoguai.jump = function(){
+				alert(this.username);
+			};
+
+			xiaoguai.pao = function(){
+				
+			};
+
+
+			var panniu = new Role("胖妞");
+			panniu.sex = "男";
+			panniu.level=5;
+			panniu.jump();
+			panniu.pa = function(){
+				alert(this.username)
+			};
+
+			//alert("sex" in panniu);
+			//alert("pa" in panniu);
+			//alert("toString" in panniu);//true
+
+
+			alert(panniu.hasOwnProperty("sex"));
+			alert(panniu.hasOwnProperty("toString"));//false
+
+					
+			//构造函数 constructor
+			//alert(xiaoguai.constructor===Role);
+			//alert(panniu.constructor===Role);
+
+			//instanceof 判断一个对象是不是当前某个类的对象,当前这个对象是不是Role创建出来的
+			//alert(xiaoguai instanceof Role);
+			//alert(panniu instanceof Role);
+			//alert(keke instanceof Role);
+
+			
+			//in: hasOwnPrototype instanceof
+			//in是判断一个属性是否在在某个对象中,包括原始对象的属性
+			//hasOwnPrototype:（只能判断对象的自有属性，不包括原始对象属性）是判断一个属性是否在在某个对象中,不包括原始对象的属性,
+			//instanceof是判断某个对象是那个类创建出来的
+
+			//原始对象属性 :Object 
+			/*
+				constructor: Object()===判断对象的构造函数是什么
+				hasOwnProperty: hasOwnProperty() 判断自有属性
+				isPrototypeOf: isPrototypeOf() 来自那个原型链
+				propertyIsEnumerable: propertyIsEnumerable() 
+				toLocaleString: toLocaleString()
+				toString: toString()//把构造函数以字符串的方式打印
+				valueOf: valueOf()//产生对象的代理引用
+			
+			*/
+			
+
+			/*var json = {username:"keke"};
+			var j2 = json.valueOf();
+			j2.username = "zhangsan";
+			j2.sex = "男";
+			alert(json.sex+"==="+j2.sex);*/
+
+
+
+
+	</script>
+ </body>
+</html>
+	

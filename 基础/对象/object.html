@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object</title>
+</head>
+<body>
+	
+<script>
+	var o1 =Object.create({x:1,y:2});//o1继承了属性x和y
+
+	//通过原型创建一个新对象
+	//inherit() 返回一个继承自原型对象p的属性的新对象
+	//inherit()函数的其中一个用途就是防止库函数无意间（非恶意的）修改那些
+	//不受你控制的对象。不是将对象直接作为参数传入函数，而是将他的继承对象传入函数
+	//当函数读取继承函数对象的属性时，实际上读取的是继承来的值。如果给继承对象的属性
+	//赋值，那这些属性只会影响这个继承对象自身，而不是原始值；
+	var o ={x:" don't change this value "};
+	library_function(inherit(o));//防止对o的意外修改
+
+	function inherit(p){
+		if (p == null) throw TypeError();                    //p是一个对象，但不能是null
+		if(Object.create) return Object.create(p);  //如果Object.create()存在 就直接使用它
+		var t = typeof p;                                             // 否则进一步检测
+		if (t !== "Object" && t!=="function") throw TypeError();
+		function (){};                                                   //定义一个空构造函数
+		f.prototype = p;                                               //将其原型属性设置为p
+		return new f();                                                //使用f()创建p的继承对象
+	}
+
+	//属性的查询和设置
+	var author = book.author;
+	var name = author.surname;
+	var title = book['main title'];
+
+	book.edition = 6;
+	book['main title'] = 'ECMAScript';
+
+	//作为关联数组的对象
+	object.prototype === object['prototype'];
+	// 这就是关联数组方法也称作 散列 映射 字典 JavaScript对象都是关联数组
+	//当通过点运算符（.）访问对象属性时，属性名用一个标识符来表示。标识符必须
+	//直接出现在JavaScript程序中，他们不是数据类型，因此程序无法修改他们。
+
+	//反过来讲，当通过[] 来访问对象的属性时，属性名通过字符串来表示。字符串是JavaScript
+	//数据类型，在程序运行时可以修改和创建它们。
+	let addr ="";
+	for(i=0;i<4;i++){
+		addr +=customer['address' + i] + '\n' ;
+	}
+	//继承
+	//JavaScript对象具有“自有属性”，也有一些属性是从远行对象继承而来的
+	const o ={};//o从Object.prototype继承对象的方法
+	o.x = 1;
+	const p = inherit(o);//p继承o和Object.prototype
+	p.y = 2;
+	const q = inherit(p)//q继承p、o、和Object.prototype
+	q.z = 3;
+	const s = q.toString();//toString继承自Object.prototype
+	console.log(q.x+q.y);
+
+
+
+
+</script>
+</body>
+</html>
